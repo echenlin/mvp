@@ -1,12 +1,13 @@
 import { useState } from 'react';
+import NewsListEntry from './NewsListEntry.jsx'
 
-const NewsList = ({ news }) => {
-  console.log('news', news);
-  const test = news.getElementById('maincontent');
+const NewsList = ({ newsList }) => {
   return (
     <div>
       NEWS
-      {test}
+      {newsList.map((news, index) => {
+        return <NewsListEntry news={news} key={index} />
+      })}
     </div>
   );
 };

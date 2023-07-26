@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ComposableMap, Geographies, Geography, Annotation, ZoomableGroup, Sphere, Graticule, Marker } from 'react-simple-maps';
 import { geoCentroid } from 'd3-geo';
 import axios from 'axios';
+import NewsList from './NewsList.jsx';
 import convert from 'react-from-dom';
 
 
@@ -11,7 +12,7 @@ const geoUrl = '/features.json';
 
 const Map = () => {
   const [countryLookup, setCountryLookup] = useState(null);
-  const [news, setNews] = useState('');
+  const [newsList, setNewsList] = useState([]);
   const [position, setPosition] = useState({
     coordinates: [0, 0],
     zoom: 1
@@ -30,19 +31,9 @@ const Map = () => {
     axios.get(`https://api.gdeltproject.org/api/v2/doc/doc?query=%20sourcecountry:${countryLookup[name]}&mode=ArtList&maxrecords=3&sort=DateDesc&timespan=1d`)
       .then((htmlString) => {
         const dom = new DOMParser().parseFromString(htmlString.data, 'text/html');
-        const news = dom.getElementById('maincontent');
-        // const container = document.getElementById('container');
-        const test = convert(news);
-        console.log('test', test)
-        setNews(test);
-        // Append the parsed DOM elements to the container element
-        // container.appendChild(news);
-        // const myElement = dom.getElementById('maincontent').querySelectorAll('a');
-        // // Extract the href attribute values from all the <a> elements
-        // const hrefValues = Array.from(myElement).map((element) => element.getAttribute('href'));
-
-        // console.log(hrefValues);
-        // // console.log('ele', myElement)
+        const myElements = dom.getElementById('maincontent').querySelectorAll('a');
+        // nodeList to array
+        setNewsList(Array.from(myElements));
       })
 
   }
@@ -103,8 +94,7 @@ const Map = () => {
           </ZoomableGroup>
         </ComposableMap>
       </div>
-      {news}
-      {/* <NewsList news={news} /> */}
+      <NewsList newsList={newsList} />
     </div>
   )
 };

@@ -23,13 +23,6 @@
   align-items: center;
 }
 
-.thumbimg {
-  height: 80px;
-  width: 80px;
-  float: right;
-  object-fit: cover;
-}
-
 
 /* a {
   font-weight: 500;

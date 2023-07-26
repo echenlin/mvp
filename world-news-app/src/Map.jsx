@@ -5,8 +5,6 @@ import axios from 'axios';
 import convert from 'react-from-dom';
 
 
-import NewsList from './NewsList.jsx';
-
 const geoUrl = '/features.json';
 // const geoUrl = 'https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json';
 
@@ -57,8 +55,8 @@ const Map = () => {
   }, [])
 
   return (
-    <div className='map'>
-      <div style={{width:'100vw', height: 'auto'}}>
+    <div className='page-body'>
+      <div className='map' style={{width:'80vw', height: 'auto'}}>
         <ComposableMap
           projectionConfig={{
             scale: 147
@@ -86,7 +84,7 @@ const Map = () => {
                         key={geo.rsmKey}
                         name={name}
                         geography={geo}
-                        fill={'#000'}
+                        fill={'#415a77'}
                         onClick={() => handleClick(name)}
                       />
                       <Marker key={name} coordinates={centroid}>

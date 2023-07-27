@@ -3,7 +3,8 @@ import { ComposableMap, Geographies, Geography, Annotation, ZoomableGroup, Spher
 import { geoCentroid } from 'd3-geo';
 import axios from 'axios';
 import NewsList from './NewsList.jsx';
-import convert from 'react-from-dom';
+import CollectionList from './CollectionList.jsx';
+import './map.css';
 
 
 const geoUrl = '/features.json';
@@ -13,6 +14,7 @@ const geoUrl = '/features.json';
 const Map = () => {
   const [countryLookup, setCountryLookup] = useState(null);
   const [newsList, setNewsList] = useState([]);
+  const [collectionList, setCollectionList] = useState([]);
   const [position, setPosition] = useState({
     coordinates: [0, 0],
     zoom: 1
@@ -32,7 +34,7 @@ const Map = () => {
       .then((htmlString) => {
         const dom = new DOMParser().parseFromString(htmlString.data, 'text/html');
         const myElements = dom.getElementById('maincontent').querySelectorAll('a');
-        // nodeList to array
+        // convert nodeList to array
         setNewsList(Array.from(myElements));
       })
 
@@ -94,7 +96,16 @@ const Map = () => {
           </ZoomableGroup>
         </ComposableMap>
       </div>
-      <NewsList newsList={newsList} />
+      <div id='news'>
+        <div id='news-list'>
+          NEWS
+          <NewsList newsList={newsList} collectionList={collectionList} setCollectionList={setCollectionList} />
+        </div>
+        <div id='news-collection'>
+          COLLECTION
+          <CollectionList collectionList={collectionList} />
+        </div>
+      </div>
     </div>
   )
 };

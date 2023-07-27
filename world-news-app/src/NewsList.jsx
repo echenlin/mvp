@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import NewsListEntry from './NewsListEntry.jsx'
 
-const NewsList = ({ newsList }) => {
+const NewsList = ({ newsList, collectionList, setCollectionList }) => {
   return (
     <div>
-      NEWS
       {newsList.map((news, index) => {
-        return <NewsListEntry news={news} key={index} />
+        return <NewsListEntry key={index} news={news} collectionList={collectionList} setCollectionList={setCollectionList} />
       })}
     </div>
   );

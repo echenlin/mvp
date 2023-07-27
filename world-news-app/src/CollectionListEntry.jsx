@@ -1,4 +1,5 @@
 import axios from 'axios';
+import './CollectionListEntry.css';
 
 const CollectionListEntry = ({ news, collectionList, setCollectionList }) => {
   const handleClick = (news) => {
@@ -18,10 +19,11 @@ const CollectionListEntry = ({ news, collectionList, setCollectionList }) => {
 
 
   return (
-    <div>
+    <div className='collection-list-entry'>
       <a href={news.link}>
         <span>{news.title}</span>
       </a>
+      <br/>
       <button onClick={() => handleClick(news)}>remove</button>
     </div>
   );

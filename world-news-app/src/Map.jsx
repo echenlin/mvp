@@ -16,6 +16,7 @@ const Map = () => {
   const [newsList, setNewsList] = useState([]);
   const [collectionList, setCollectionList] = useState([]);
   const [currentCountry, setCurrentCountry] = useState('US');
+  const [currentTab, setCurrentTab] = useState(1);
   const [position, setPosition] = useState({
     coordinates: [0, 0],
     zoom: 1
@@ -65,7 +66,11 @@ const Map = () => {
       .catch((error) => {
         console.log(error);
       })
-  }, [])
+  }, []);
+
+  const toggleTab = (tab) => {
+    setCurrentTab(tab);
+  }
 
   return (
     <div className='page-body'>
@@ -117,13 +122,28 @@ const Map = () => {
         </ComposableMap>
       </div>
       <div id='news'>
-        <div id='news-list'>
-          <h2>{currentCountry} NEWS</h2>
-          <NewsList newsList={newsList} collectionList={collectionList} setCollectionList={setCollectionList} />
+        <div id='bloc-tabs'>
+          <div
+            className={currentTab === 1? 'active-tab' : 'tabs'}
+            onClick={() => toggleTab(1)}>
+            <h2>{currentCountry} NEWS</h2>
+          </div>
+          <div
+            className={currentTab === 2? 'active-tab' : 'tabs'}
+            onClick={() => toggleTab(2)}>
+            <h2>COLLECTION</h2>
+          </div>
         </div>
-        <div id='news-collection'>
-          <h2>COLLECTION</h2>
-          <CollectionList collectionList={collectionList} setCollectionList={setCollectionList}/>
+        <div id='news-list' className={currentTab === 1? 'active-content' : 'content'}>
+          <NewsList
+            newsList={newsList}
+            collectionList={collectionList}
+            setCollectionList={setCollectionList} />
+        </div>
+        <div id='news-collection' className={currentTab === 2? 'active-content' : 'content'}>
+          <CollectionList
+            collectionList={collectionList}
+            setCollectionList={setCollectionList}/>
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ const NewsListEntry = ({ news, collectionList, setCollectionList  }) => {
     setCollectionList([...collectionList, data]);
     axios.post('http://localhost:5173/news', data)
       .then((response) => {
-        // console.log(response);
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);

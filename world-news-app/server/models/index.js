@@ -24,7 +24,7 @@ const getAll = async () => {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 const addOne = async (data) => {
   try {
@@ -34,7 +34,17 @@ const addOne = async (data) => {
   } catch (error) {
     console.log(error);
   }
-}
+};
+
+const deleteOne = async (data) => {
+  try {
+    const db = await connectDb();
+    const collection = db.collection('news');
+    return collection.deleteOne(data);
+  } catch (error) {
+    console.log(error)
+  }
+};
 
 
-export { getAll, addOne }
+export { getAll, addOne, deleteOne }

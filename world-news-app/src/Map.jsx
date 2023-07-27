@@ -123,7 +123,7 @@ const Map = () => {
         </div>
         <div id='news-collection'>
           <h2>COLLECTION</h2>
-          <CollectionList collectionList={collectionList} />
+          <CollectionList collectionList={collectionList} setCollectionList={setCollectionList}/>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { getAllNews, addNews } from './controllers/index.js';
+import { getAllNews, addNews, deleteNews } from './controllers/index.js';
 import express from 'express';
 
 const router = express.Router();
@@ -6,6 +6,8 @@ const router = express.Router();
 router.get('/', getAllNews);
 
 router.post('/', addNews);
+
+router.delete('/', deleteNews);
 
 
 

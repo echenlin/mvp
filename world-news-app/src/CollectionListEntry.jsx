@@ -1,7 +1,9 @@
 const CollectionListEntry = ({ news }) => {
   return (
     <div>
-      {news.title}
+      <a href={news.link}>
+        <span>{news.title}</span>
+      </a>
     </div>
   );
 };

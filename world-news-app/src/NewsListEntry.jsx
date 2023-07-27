@@ -8,7 +8,6 @@ const NewsListEntry = ({ news, collectionList, setCollectionList  }) => {
   const sourceInfo = news.getElementsByClassName('sourceinfo')[0].textContent.split('(')[0].trim('');
 
   const handleClick = (articleTitle, articleLink) => {
-    console.log('clicked', articleTitle, articleLink);
     const data = {title: articleTitle, link: articleLink}
     setCollectionList([...collectionList, data]);
     axios.post('http://localhost:5173/news', data)

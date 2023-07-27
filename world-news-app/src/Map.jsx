@@ -15,6 +15,7 @@ const Map = () => {
   const [countryLookup, setCountryLookup] = useState(null);
   const [newsList, setNewsList] = useState([]);
   const [collectionList, setCollectionList] = useState([]);
+  const [currentCountry, setCurrentCountry] = useState('US');
   const [position, setPosition] = useState({
     coordinates: [0, 0],
     zoom: 1
@@ -26,6 +27,7 @@ const Map = () => {
 
   const handleClick = (name) => {
     console.log(name,'clicked!');
+    setCurrentCountry(name);
     if (countryLookup[name] === undefined) {
       console.log('not in list: ', name)
       return;
@@ -37,13 +39,31 @@ const Map = () => {
         // convert nodeList to array
         setNewsList(Array.from(myElements));
       })
-
   }
 
   useEffect(() => {
     axios.get('/country-lookup.json')
       .then((response) => {
         setCountryLookup(response.data)
+      })
+
+    axios.get(`https://api.gdeltproject.org/api/v2/doc/doc?query=%20sourcecountry:US&mode=ArtList&maxrecords=3&sort=DateDesc&timespan=1d`)
+      .then((htmlString) => {
+        const dom = new DOMParser().parseFromString(htmlString.data, 'text/html');
+        const myElements = dom.getElementById('maincontent').querySelectorAll('a');
+        // convert nodeList to array
+        setNewsList(Array.from(myElements));
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+    axios.get('http://localhost:5173/news')
+      .then((response) => {
+        setCollectionList(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       })
   }, [])
 
@@ -98,11 +118,11 @@ const Map = () => {
       </div>
       <div id='news'>
         <div id='news-list'>
-          NEWS
+          <h2>{currentCountry} NEWS</h2>
           <NewsList newsList={newsList} collectionList={collectionList} setCollectionList={setCollectionList} />
         </div>
         <div id='news-collection'>
-          COLLECTION
+          <h2>COLLECTION</h2>
           <CollectionList collectionList={collectionList} />
         </div>
       </div>

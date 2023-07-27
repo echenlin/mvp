@@ -1,4 +1,15 @@
+#page-body {
+  position: absolute;
+}
+
+
 #news {
   display: flex;
   flex-direction: row;
+  width: 100%;
+}
+
+#news-list {
+  /* position: fixed; */
+  width: 70%;
 }

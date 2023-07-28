@@ -2,6 +2,10 @@
 // import viteLogo from '/vite.svg'
 import './App.css'
 import Map from './Map.jsx'
+// import Globe from 'react-globe.gl';
+import MyGlobe from './MyGlobe.jsx'
+
+
 
 const App = () => {
   return (
@@ -9,8 +13,9 @@ const App = () => {
       <div id='page-header'>
         <h1>World News</h1>
       </div>
-      <Map />
-    </>
+      <MyGlobe />
+      {/* <Map /> */}
+      </>
   )
 }
 

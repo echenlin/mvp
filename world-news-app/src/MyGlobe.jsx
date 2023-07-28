@@ -13,18 +13,17 @@ const MyGlobe = ({ handleClick }) => {
 
 
   return (
-    <div className='page-body'>
-      <div className='map' style={{width:'80vw', height: 'auto'}}>
-        <Globe
-          globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-          backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
-          polygonsData={countries.features}
-          polygonCapColor	={() => `#${Math.round(Math.random() * Math.pow(2, 24)).toString(16).padStart(1, '0')}`}
-          polygonLabel={({ properties: d }) => `<b>${d.ADMIN}</b>`}
-          onPolygonClick={handleClick}
-        />
-      </div>
-    </div>
+    <Globe
+      width='500'
+      height='500'
+      // backgroundColor='white'
+      globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+      // backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+      polygonsData={countries.features}
+      polygonCapColor	={() => `#${Math.round(Math.random() * Math.pow(2, 24)).toString(16).padStart(1, '0')}`}
+      polygonLabel={({ properties: d }) => `<b>${d.ADMIN}</b>`}
+      onPolygonClick={handleClick}
+    />
   )
 };
 

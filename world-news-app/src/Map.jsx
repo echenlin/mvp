@@ -4,7 +4,6 @@ import { geoCentroid } from 'd3-geo';
 import axios from 'axios';
 import NewsList from './NewsList.jsx';
 import CollectionList from './CollectionList.jsx';
-import './map.css';
 
 
 const geoUrl = '/features.json';

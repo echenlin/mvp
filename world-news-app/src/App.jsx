@@ -1,5 +1,5 @@
 import './App.css'
-import Map from './Map.jsx'
+// import Map from './Map.jsx'
 import MyGlobe from './MyGlobe.jsx'
 import axios from 'axios';
 import NewsList from './NewsList.jsx';
@@ -64,32 +64,41 @@ const App = () => {
   return (
     <>
       <div id='page-header'>
-        <h1>World News</h1>
+        <div id='title'>
+          <h1>WORLD NEWS</h1>
+        </div>
+        <div></div>
       </div>
-      <MyGlobe handleClick={handleClick}/>
-      <div id='news'>
-        <div id='bloc-tabs'>
-          <div
-            className={currentTab === 1? 'active-tab' : 'tabs'}
-            onClick={() => toggleTab(1)}>
-            <h2>{currentCountry} NEWS</h2>
-          </div>
-          <div
-            className={currentTab === 2? 'active-tab' : 'tabs'}
-            onClick={() => toggleTab(2)}>
-            <h2>COLLECTION</h2>
-          </div>
+      <div id='page-content'>
+        <div id='globe'>
+          <MyGlobe handleClick={handleClick}/>
         </div>
-        <div id='news-list' className={currentTab === 1? 'active-content' : 'content'}>
-          <NewsList
-            newsList={newsList}
-            collectionList={collectionList}
-            setCollectionList={setCollectionList} />
-        </div>
-        <div id='news-collection' className={currentTab === 2? 'active-content' : 'content'}>
-          <CollectionList
-            collectionList={collectionList}
-            setCollectionList={setCollectionList}/>
+        <div id='news'>
+          <div id='bloc-tabs'>
+            <div
+              id='news-tab'
+              className={currentTab === 1? 'active-tab' : 'tabs'}
+              onClick={() => toggleTab(1)}>
+              <h2>{currentCountry} NEWS</h2>
+            </div>
+            <div
+              id='collection-tab'
+              className={currentTab === 2? 'active-tab' : 'tabs'}
+              onClick={() => toggleTab(2)}>
+              <h2>COLLECTION</h2>
+            </div>
+          </div>
+          <div id='news-list' className={currentTab === 1? 'active-content' : 'content'}>
+            <NewsList
+              newsList={newsList}
+              collectionList={collectionList}
+              setCollectionList={setCollectionList} />
+          </div>
+          <div id='news-collection' className={currentTab === 2? 'active-content' : 'content'}>
+            <CollectionList
+              collectionList={collectionList}
+              setCollectionList={setCollectionList}/>
+          </div>
         </div>
       </div>
     </>

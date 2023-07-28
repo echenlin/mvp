@@ -20,7 +20,7 @@ const NewsListEntry = ({ news, collectionList, setCollectionList  }) => {
   }
 
   return (
-    <div className='news-list-entry'>
+    <div id='news-list-entry' className='list-entry'>
       <a href={articleLink}>
         <img className='thumbimg'
           src={

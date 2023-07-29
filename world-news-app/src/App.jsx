@@ -20,7 +20,7 @@ const App = () => {
         setCountryLookup(response.data)
       })
 
-    axios.get(`https://api.gdeltproject.org/api/v2/doc/doc?query=%20sourcecountry:US&mode=ArtList&maxrecords=3&sort=DateDesc&timespan=1d`)
+    axios.get(`https://api.gdeltproject.org/api/v2/doc/doc?query=%20sourcecountry:US&mode=ArtList&maxrecords=10&sort=DateDesc&timespan=1d`)
       .then((htmlString) => {
         const dom = new DOMParser().parseFromString(htmlString.data, 'text/html');
         const myElements = dom.getElementById('maincontent').querySelectorAll('a');
@@ -52,7 +52,7 @@ const App = () => {
       console.log('not in list: ', name)
       return;
     }
-    axios.get(`https://api.gdeltproject.org/api/v2/doc/doc?query=%20sourcecountry:${countryLookup[name]}&mode=ArtList&maxrecords=3&sort=DateDesc&timespan=1d`)
+    axios.get(`https://api.gdeltproject.org/api/v2/doc/doc?query=%20sourcecountry:${countryLookup[name]}&mode=ArtList&maxrecords=10&sort=DateDesc&timespan=1d`)
       .then((htmlString) => {
         const dom = new DOMParser().parseFromString(htmlString.data, 'text/html');
         const myElements = dom.getElementById('maincontent').querySelectorAll('a');
@@ -64,22 +64,15 @@ const App = () => {
   return (
     <>
       <div id='page-header'>
-        <div id='title'>
+        {/* <div id='title'>
           <h1>WORLD NEWS</h1>
-        </div>
-        <div></div>
-      </div>
-      <div id='page-content'>
-        <div id='globe'>
-          <MyGlobe handleClick={handleClick}/>
-        </div>
-        <div id='news'>
-          <div id='bloc-tabs'>
+        </div> */}
+        <div id='bloc-tabs'>
             <div
               id='news-tab'
               className={currentTab === 1? 'active-tab' : 'tabs'}
               onClick={() => toggleTab(1)}>
-              <h2>{currentCountry} NEWS</h2>
+              <h1>WORLD NEWS - {currentCountry}</h1>
             </div>
             <div
               id='collection-tab'
@@ -88,6 +81,9 @@ const App = () => {
               <h2>COLLECTION</h2>
             </div>
           </div>
+      </div>
+      <div id='page-content'>
+        <div id='news'>
           <div id='news-list' className={currentTab === 1? 'active-content' : 'content'}>
             <NewsList
               newsList={newsList}
@@ -99,6 +95,9 @@ const App = () => {
               collectionList={collectionList}
               setCollectionList={setCollectionList}/>
           </div>
+        </div>
+        <div id='globe'>
+          <MyGlobe handleClick={handleClick}/>
         </div>
       </div>
     </>

@@ -14,8 +14,8 @@ const MyGlobe = ({ handleClick }) => {
 
   return (
     <Globe
-      width='500'
-      height='500'
+      width='400'
+      height='400'
       // backgroundColor='white'
       globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
       // backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"

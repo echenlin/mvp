@@ -20,14 +20,17 @@
 }
 
 #globe {
-  width: 50%;
+  margin-top: 80px;
+  margin-right: 50px;
 }
 
 
 #news-list, #news-collection {
-  width: 500px;
-  max-height: 50vh;
+  width: 600px;
+  max-height: 60vh;
   overflow-y: auto;
+  padding-left: 60px;
+  padding-top: 15px;
 }
 
 .content {
@@ -40,9 +43,9 @@
 }
 
 #news-tab, #collection-tab {
-  display: inline-block;
-  width: 180px;
-  padding: 30px;
+  /* display: inline-block; */
+  /* width: 400px; */
+  /* padding: 30px; */
 }
 
 .active-tab {

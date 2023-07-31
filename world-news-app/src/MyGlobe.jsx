@@ -14,11 +14,12 @@ const MyGlobe = ({ handleClick }) => {
 
   return (
     <Globe
-      width='400'
-      height='400'
+      width='700'
+      height='600'
       // backgroundColor='white'
-      globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+      // globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
       // backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+      backgroundColor='rgb(0,0,0,0)'
       polygonsData={countries.features}
       polygonCapColor	={() => `#${Math.round(Math.random() * Math.pow(2, 24)).toString(16).padStart(1, '0')}`}
       polygonLabel={({ properties: d }) => `<b>${d.ADMIN}</b>`}

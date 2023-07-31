@@ -2,12 +2,16 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  font-size: large;
   /* margin: 30px; */
 
 
   /* color-scheme: light dark; */
   color: #F8F8FF;
-  background-color: black;
+  /* background-color: black; */
+  overflow: hidden;
+  background-size: cover
+
 
 
   /* background-color: #242424; #B0C4DE */
@@ -33,13 +37,18 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   /* Set a height to ensure the background is visible */
-  min-height: 100vh;
+  height: 100vh;
+  margin: 0;
 }
 
 h1 {
   font-size: 3.5em;
   line-height: 1.1;
   margin-bottom: 0px;
+}
+
+h2 {
+  margin-top: 5px;
 }
 /*
 

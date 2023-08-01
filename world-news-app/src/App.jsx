@@ -16,8 +16,13 @@ const App = () => {
   const [dataSort, setDataSort] = useState('DateDesc');
   const [queryCount, setQueryCount] = useState(20);
   const [pageColor, setPageColor] = useState(true);
+  const [time, setTime] = useState(new Date());
 
   const gdeltApi = 'https://api.gdeltproject.org/api/v2/doc/doc?query=%20';
+
+  useEffect(() => {
+    setInterval(() => setTime(new Date()), 1000);
+  }, [])
 
   useEffect(() => {
     if (pageColor) {
@@ -65,7 +70,6 @@ const App = () => {
       console.log('not in list: ', name)
       return;
     }
-    console.log('url', `${gdeltApi}sourcecountry:${countryLookup[name]}&mode=ArtList&maxrecords=${queryCount}&sort=${dataSort}&timespan=1d`)
     axios.get(`${gdeltApi}sourcecountry:${countryLookup[name]}&mode=ArtList&maxrecords=${queryCount}&sort=${dataSort}&timespan=1d`)
       .then((htmlString) => {
         const dom = new DOMParser().parseFromString(htmlString.data, 'text/html');
@@ -79,14 +83,17 @@ const App = () => {
     <>
       <div id='page-header'>
         <h1 className='text-gray-300 text-5xl m-8'>WORLD NEWS - {currentCountry}</h1>
+        <span className='clock text-white'>
+          {time.toLocaleTimeString()}
+        </span>
         <div className='background-toggle'>
-        <label className="switch">
-          <input type="checkbox" onClick={() => {
-            setPageColor(!pageColor);
-          }} />
-          <span className="slider round"></span>
-        </label>
-      </div>
+          <label className="switch">
+            <input type="checkbox" onClick={() => {
+              setPageColor(!pageColor);
+            }} />
+            <span className="slider round"></span>
+          </label>
+        </div>
       </div>
       <div id='data-queries' className='text-gray-500 ml-10 mb-10 flex flex-row'>
         <label for='data-sort'>

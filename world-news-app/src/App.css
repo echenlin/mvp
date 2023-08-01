@@ -67,6 +67,12 @@
   padding-left: 30px;
 }
 
+.clock {
+  position: absolute;
+  margin-top: 55px;
+  right: 120px;
+}
+
 
 /* The switch - the box around the slider */
 .switch {

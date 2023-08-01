@@ -14,6 +14,7 @@ const App = () => {
   const [currentCountry, setCurrentCountry] = useState('US');
   const [currentTab, setCurrentTab] = useState(1);
   const [dataSort, setDataSort] = useState('DateDesc');
+  const [dataDays, setDataDays] = useState('1d');
   const [queryCount, setQueryCount] = useState(20);
   const [pageColor, setPageColor] = useState(true);
   const [time, setTime] = useState(new Date());
@@ -70,7 +71,7 @@ const App = () => {
       console.log('not in list: ', name)
       return;
     }
-    axios.get(`${gdeltApi}sourcecountry:${countryLookup[name]}&mode=ArtList&maxrecords=${queryCount}&sort=${dataSort}&timespan=1d`)
+    axios.get(`${gdeltApi}sourcecountry:${countryLookup[name]}&mode=ArtList&maxrecords=${queryCount}&sort=${dataSort}&timespan=${dataDays}`)
       .then((htmlString) => {
         const dom = new DOMParser().parseFromString(htmlString.data, 'text/html');
         const myElements = dom.getElementById('maincontent').querySelectorAll('a');
@@ -96,7 +97,20 @@ const App = () => {
         </div>
       </div>
       <div id='data-queries' className='text-gray-500 ml-10 mb-10 flex flex-row'>
-        <label for='data-sort'>
+        <label>
+          recent &nbsp;
+          <select name='data-days' id='data-days'
+            onChange={(e) => {
+              console.log(e.target.value)
+              setDataDays(e.target.value)
+            }}
+            defaultValue={dataDays} >
+            <option value='1d'>1 day</option>
+            <option value='3d'>3 day</option>
+            <option value='5d'>5 day</option>
+          </select>
+        </label>
+        <label className='ml-10'>
           sort by &nbsp;
           <select name='data-sort' id='data-sort'
             onChange={(e) => {

@@ -20,7 +20,7 @@ const NewsListEntry = ({ news, collectionList, setCollectionList  }) => {
   }
 
   return (
-    <div id='news-list-entry' className='list-entry'>
+    <div id='news-list-entry' className='list-entry text-white text-xl bg-blue-900 bg-opacity-50 p-4 rounded-2xl p-5 m-10'>
       <a href={articleLink}>
         <img className='thumbimg'
           src={
@@ -42,7 +42,11 @@ const NewsListEntry = ({ news, collectionList, setCollectionList  }) => {
         </span>
       </a>
       <br/>
-      <button onClick={() => handleClick(articleTitle, articleLink)}>add to collection</button>
+      <button
+        className='mt-2 bg-transparent hover:bg-blue-500 text-blue-300 hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded'
+        onClick={() => handleClick(articleTitle, articleLink)}>
+        collect
+      </button>
 
     </div>
   );

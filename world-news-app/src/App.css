@@ -1,39 +1,27 @@
 #page-header {
-  padding-left: 50px;
+  padding-left: 30px;
+  display: flex;
+  flex-direction: row;
 }
 
-/* #title {
-  width: 480px;
-  display: flex;
-  justify-content: center;
-} */
-/*
-#page-header {
-  display: flex;
-  flex-direction: row;
-} */
-
 #page-content {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 
 #globe {
-  margin-top: 80px;
-  margin-right: 200px;
+  /* margin-top: 30px;
+  margin-right: 50px; */
 }
 
-.background-toggle {
-  margin-top: 10px;
-}
 
 #news-list, #news-collection {
-  width: 600px;
-  max-height: 50vh;
+  width: 700px;
+  max-height: 60vh;
   overflow-y: auto;
-  padding-left: 300px;
-  padding-top: 50px;
+  /* padding-left: 300px; */
+  /* padding-top: 15px; */
 }
 
 .content {
@@ -52,7 +40,21 @@
 }
 
 .active-tab {
-  color: blue;
+  color: white;
+  font-size: x-large;
+  font-weight: bold;
+  margin-left: 2.5rem;
+  margin-bottom: 10px;
+  width: 150px;
+}
+
+.tabs {
+  color: rgba(30, 58, 138);
+  font-size: x-large;
+  font-weight: bolder;
+  margin-left: 2.5rem;
+  margin-bottom: 10px;
+  width: 150px;
 }
 
 .list-entry {
@@ -68,10 +70,13 @@
 
 /* The switch - the box around the slider */
 .switch {
-  position: relative;
+  margin-top: 50px;
+  right: 50px;
+  margin-left: auto;
+  position: absolute;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 50px;
+  height: 30px;
 }
 
 /* Hide default HTML checkbox */
@@ -97,8 +102,8 @@
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 22px;
+  width: 22px;
   left: 4px;
   bottom: 4px;
   background-color: white;
@@ -116,8 +121,8 @@ input:focus + .slider {
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
 }
 
 /* Rounded sliders */

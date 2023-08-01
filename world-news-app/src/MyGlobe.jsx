@@ -1,5 +1,5 @@
 import Globe from 'react-globe.gl';
-import { useState, useEffect } from 'React';
+import { useState, useEffect } from 'react';
 
 
 const MyGlobe = ({ handleClick }) => {
@@ -8,7 +8,7 @@ const MyGlobe = ({ handleClick }) => {
   useEffect(() => {
     // load data
     fetch('./ne_110m_admin_0_countries.geojson').then(res => {
-       return res.json()}).then(setCountries);
+      return res.json()}).then(setCountries);
   }, []);
 
 

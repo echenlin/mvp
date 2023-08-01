@@ -14,7 +14,7 @@ const App = () => {
   const [currentCountry, setCurrentCountry] = useState('US');
   const [currentTab, setCurrentTab] = useState(1);
   const [dataSort, setDataSort] = useState('DateDesc');
-  const [queryCount, setQueryCount] = useState(50);
+  const [queryCount, setQueryCount] = useState(20);
   const [pageColor, setPageColor] = useState(true);
 
   const gdeltApi = 'https://api.gdeltproject.org/api/v2/doc/doc?query=%20';
@@ -78,27 +78,19 @@ const App = () => {
   return (
     <>
       <div id='page-header'>
-        {/* <div id='title'>
-          <h1>WORLD NEWS</h1>
-        </div> */}
-        <div id='bloc-tabs'>
-          <div
-            id='news-tab'
-            className={currentTab === 1? 'active-tab' : 'tabs'}
-            onClick={() => toggleTab(1)}>
-            <h1>WORLD NEWS - {currentCountry}</h1>
-          </div>
-          <div
-            id='collection-tab'
-            className={currentTab === 2? 'active-tab' : 'tabs'}
-            onClick={() => toggleTab(2)}>
-            <h2>COLLECTION</h2>
-          </div>
-        </div>
+        <h1 className='text-gray-300 text-5xl m-8'>WORLD NEWS - {currentCountry}</h1>
+        <div className='background-toggle'>
+        <label className="switch">
+          <input type="checkbox" onClick={() => {
+            setPageColor(!pageColor);
+          }} />
+          <span className="slider round"></span>
+        </label>
       </div>
-      <div id='data-queries'>
+      </div>
+      <div id='data-queries' className='text-gray-500 ml-10 mb-10 flex flex-row'>
         <label for='data-sort'>
-          sort by:
+          sort by &nbsp;
           <select name='data-sort' id='data-sort'
             onChange={(e) => {
               console.log(e.target.value)
@@ -112,37 +104,53 @@ const App = () => {
           </select>
         </label>
         <div>
-          <button onClick={() => setQueryCount(queryCount - 1)}>-</button>
+          <button
+            className='bg-gray-300 hover:bg-gray-400 text-gray-800 px-2 rounded-l ml-10'
+            onClick={() => setQueryCount(queryCount - 1)}>
+            -
+          </button>
           <span>{queryCount}</span>
-          <button onClick={() => setQueryCount(queryCount + 1)}>+</button>
+          <button
+            className='bg-gray-300 hover:bg-gray-400 text-gray-800 px-2 rounded-l'
+            onClick={() => setQueryCount(queryCount + 1)}>
+            +
+          </button>
         </div>
-      <div className='background-toggle'>
-        <label className="switch">
-          <input type="checkbox" onClick={() => {
-            setPageColor(!pageColor);
-          }
-          } />
-          <span className="slider round"></span>
-        </label>
       </div>
-      </div>
-      <div id='page-content'>
-        <div id='news'>
-          <div id='news-list' className={currentTab === 1? 'active-content' : 'content'}>
-            <NewsList
-              newsList={newsList}
-              collectionList={collectionList}
-              setCollectionList={setCollectionList} />
+      <div id='page-content' >
+        <div className='flex flex-row justify-center'>
+          <div id='news'>
+          <div id='bloc-tabs'>
+            <span
+              id='news-tab'
+              className={currentTab === 1? 'active-tab' : 'tabs'}
+              onClick={() => toggleTab(1)}>
+              LOCAL NEWS
+            </span>
+            <span
+              id='collection-tab'
+              className={currentTab === 2? 'active-tab' : 'tabs'}
+              onClick={() => toggleTab(2)}>
+              COLLECTION
+            </span>
           </div>
-          <div id='news-collection' className={currentTab === 2? 'active-content' : 'content'}>
-            <CollectionList
-              collectionList={collectionList}
-              setCollectionList={setCollectionList}/>
+            <div id='news-list' className={currentTab === 1? 'active-content' : 'content'}>
+              <NewsList
+                newsList={newsList}
+                collectionList={collectionList}
+                setCollectionList={setCollectionList} />
+            </div>
+            <div id='news-collection' className={currentTab === 2? 'active-content' : 'content'}>
+              <CollectionList
+                collectionList={collectionList}
+                setCollectionList={setCollectionList}/>
+            </div>
+          </div>
+          <div id='globe' className='ml-10'>
+            <MyGlobe handleClick={handleClick}/>
           </div>
         </div>
-        <div id='globe'>
-          <MyGlobe handleClick={handleClick}/>
-        </div>
+
       </div>
     </>
   )

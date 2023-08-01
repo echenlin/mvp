@@ -120,7 +120,7 @@ const Map = () => {
           </ZoomableGroup>
         </ComposableMap>
       </div>
-      <div id='news'>
+      <div id='news' className='max-w-4xl'>
         <div id='bloc-tabs'>
           <div
             className={currentTab === 1? 'active-tab' : 'tabs'}

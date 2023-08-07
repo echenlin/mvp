@@ -1,42 +1,141 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+#page-header {
+  padding-left: 30px;
+  display: flex;
+  flex-direction: row;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+#page-content {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between; */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#globe {
+  /* margin-top: 30px;
+  margin-right: 50px; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+
+#news-list, #news-collection {
+  width: 700px;
+  max-height: 60vh;
+  overflow-y: auto;
+  /* padding-left: 300px; */
+  /* padding-top: 15px; */
 }
 
-.card {
-  padding: 2em;
+.content {
+  display: none;
 }
 
-.read-the-docs {
-  color: #888;
+.active-content {
+  width: 70%;
+  display: block;
+}
+
+#news-tab, #collection-tab {
+  /* display: inline-block; */
+  /* width: 400px; */
+  /* padding: 30px; */
+}
+
+.active-tab {
+  color: white;
+  font-size: x-large;
+  font-weight: bold;
+  margin-left: 2.5rem;
+  margin-bottom: 10px;
+  width: 150px;
+}
+
+.tabs {
+  color: rgba(30, 58, 138);
+  font-size: x-large;
+  font-weight: bolder;
+  margin-left: 2.5rem;
+  margin-bottom: 10px;
+  width: 150px;
+}
+
+.list-entry {
+  margin: 10px;
+  padding: 10px;
+  min-height: 80px;
+}
+
+#data-queries {
+  padding-left: 30px;
+}
+
+.clock {
+  position: absolute;
+  margin-top: 55px;
+  right: 120px;
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+  margin-top: 50px;
+  right: 50px;
+  margin-left: auto;
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
